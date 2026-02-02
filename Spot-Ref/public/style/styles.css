@@ -1,0 +1,138 @@
+/* Targeted CSS - Change only PINK elements to BLUE while preserving Chainlit theme */
+
+/* Custom Spot-Ref Logo Replacement */
+
+/* Hide all possible Chainlit logo elements */
+.cl-header-logo,
+.cl-header-logo img,
+[data-testid="header-logo"],
+[data-testid="header-logo"] img,
+header img[src*="chainlit"],
+header img[alt*="Chainlit"],
+header img[alt*="chainlit"],
+.cl-header img,
+.cl-header svg {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Replace with Spot-Ref logo */
+.cl-header-logo,
+[data-testid="header-logo"] {
+    background-image: url('/public/style/Spot-Ref.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 120px !important;
+    height: 28px !important;
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Alternative selectors for different Chainlit versions */
+.cl-header > div:first-child,
+.cl-header > div:first-child > div:first-child {
+    background-image: url('/public/style/Spot-Ref.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 120px !important;
+    height: 28px !important;
+    display: block !important;
+}
+
+/* Hide any text content in logo area */
+.cl-header-logo span,
+[data-testid="header-logo"] span,
+.cl-header-logo *,
+[data-testid="header-logo"] * {
+    display: none !important;
+}
+
+/* Keep a small indicator that CSS is loaded (less intrusive) */
+body::after {
+    content: "CSS ✓";
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0e3ff3;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    z-index: 9999;
+    opacity: 0.7;
+}
+
+/* dark theme */
+:root[data-theme='dark'] {
+    --primary-hue: 220;
+    --primary-saturation: 100%;
+    --primary-lightness: 50%;
+    --primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+    --primary-light: hsl(var(--primary-hue), var(--primary-saturation), 60%);
+    --primary-dark: hsl(var(--primary-hue), var(--primary-saturation), 40%);
+    --background-color: #111111;
+    --text-color: #ffffff;
+    --border-color: #3500b0;
+}
+
+/* light theme */
+:root[data-theme='light'] {
+    --primary-hue: 220;
+    --primary-saturation: 100%;
+    --primary-lightness: 50%;
+    --primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+    --primary-light: hsl(var(--primary-hue), var(--primary-saturation), 60%);
+    --primary-dark: hsl(var(--primary-hue), var(--primary-saturation), 40%);
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #3500b0;
+}
+
+/* Boutons principaux Material-UI en rose (clair et sombre) */
+.MuiButton-containedPrimary,
+.MuiButton-containedPrimary:hover {
+    background-color: #1976d2 !important;
+    color: #fff !important;
+    border-color: #1976d2 !important;
+}
+
+/* Boutons outlined roses */
+.MuiButton-outlinedPrimary,
+.MuiButton-outlinedPrimary:hover {
+    border-color: #1976d2 !important;
+    color: #1976d2 !important;
+}
+
+/* Icônes boutons roses (inline style) */
+.MuiIconButton-root[style*="#e91e63"],
+.MuiIconButton-root[style*="rgb(233, 30, 99)"] {
+    color: #1976d2 !important;
+}
+
+/* Styles inline roses (fallback) */
+[style*="color: #e91e63"],
+[style*="color: rgb(233, 30, 99)"] {
+    color: #1976d2 !important;
+}
+[style*="background-color: #e91e63"],
+[style*="background-color: rgb(233, 30, 99)"] {
+    background-color: #1976d2 !important;
+    color: #fff !important;
+}
+
+/* Hover effet pour le bleu */
+.MuiButton-containedPrimary:hover,
+.MuiButton-outlinedPrimary:hover {
+    background-color: #1565c0 !important;
+    border-color: #1565c0 !important;
+    color: #fff !important;
+}
+
+/* Contraste sur fond bleu */
+[style*="background-color: #1976d2"] * {
+    color: #fff !important;
+}

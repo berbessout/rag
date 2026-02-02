@@ -1,0 +1,11 @@
+---
+description: 
+globs: src/main.py
+alwaysApply: false
+---
+## src/main.py
+- Main application entry point using Chainlit and LangGraph
+- Defines the conversational agent workflow
+- Uses Azure OpenAI for LLM functionality
+- Implements tools for the agent to use
+- Follows a state graph pattern for managing conversation flow

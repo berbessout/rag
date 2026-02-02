@@ -1,0 +1,49 @@
+---
+description:
+globs: src/transfert_pdf_txt.py
+alwaysApply: false
+---
+# PDF to Text Conversion
+
+## src/transfert_pdf_txt.py
+
+- Converts PDF files to text format
+- Uses pytesseract and OpenCV for OCR
+- Implements column detection for better text extraction
+- Preserves document structure in the output text
+- Replaces original PDFs with text versions after conversion
+
+### Key Functions
+
+#### detect_columns()
+
+```python
+def detect_columns(image):
+    """Détecte automatiquement les colonnes en analysant la distribution du texte."""
+```
+
+- Analyzes text distribution in the image
+- Uses Tesseract OCR to extract text positions
+- Creates histograms of text distribution
+- Identifies column boundaries using peak detection
+- Returns structured text blocks organized by columns
+
+#### convert_and_replace_pdfs()
+
+```python
+def convert_and_replace_pdfs(folder_path):
+    """Converts PDFs to text files and replaces the originals."""
+```
+
+- Processes all PDF files in the specified directory
+- Converts each page to images using pdf2image
+- Detects columns in each page
+- Writes structured text to output files
+- Removes original PDF files after successful conversion
+
+### Implementation Notes
+
+- Preserves page and column structure in output text
+- Uses intelligent column detection for multi-column documents
+- Handles OCR with pytesseract
+- Image processing with OpenCV and numpy

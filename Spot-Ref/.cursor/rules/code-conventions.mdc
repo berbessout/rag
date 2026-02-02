@@ -1,0 +1,68 @@
+---
+description: 
+globs: *py
+alwaysApply: false
+---
+# Code Conventions
+
+## Python Style Guidelines
+
+### Imports
+
+- Group imports in the following order:
+  1. Standard library imports
+  2. Third-party imports (with a blank line separator)
+  3. Local application imports (with a blank line separator)
+- Example from [ingest.py](mdc:Spot-Ref-New/src/ingest.py):
+
+  ```python
+  import os
+  from pathlib import Path
+  from typing import List, Dict, Any, Optional
+
+  from dotenv import load_dotenv
+  from qdrant_client import QdrantClient
+  from qdrant_client.http import models
+  from langchain_openai import AzureOpenAIEmbeddings
+
+  from llm_semantic_splitter import semantic_split
+  ```
+
+### Function Documentation
+
+- Use docstrings for all functions
+- Include:
+  - Description
+  - Args
+  - Returns
+  - Raises (if applicable)
+- Example from [llm_semantic_splitter.py](mdc:Spot-Ref-New/src/llm_semantic_splitter.py):
+
+  ```python
+  def semantic_split(document_source: str, document_context: str, max_chunk_size: int = 1000) -> tuple[list[str], list[dict]]:
+      """Splits a text into semantic segments using an Azure OpenAI LLM.
+
+      Args:
+          document_source (str): The source of the document.
+          document_context (str): The context of the document.
+          max_chunk_size (int, optional): Maximum size of a segment (in characters). Defaults to 1000.
+
+      Returns:
+          tuple[list[str], list[dict]]: A tuple containing the list of chunks and the list of metadata dicts.
+
+      Raises:
+          RuntimeError: If the LLM call fails or environment variables are missing.
+      """
+  ```
+
+### Error Handling
+
+- Use specific exception types
+- Include meaningful error messages
+- Consider logging for debugging
+
+### File Structure
+
+- Main execution code should be in `if __name__ == "__main__":` blocks
+- Organize classes and functions logically
+- Use comments to separate major sections (as seen in [ingest.py](mdc:Spot-Ref-New/src/ingest.py))

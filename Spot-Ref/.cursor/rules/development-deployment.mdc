@@ -1,0 +1,53 @@
+---
+description: relative to Development and Deployment
+globs: 
+alwaysApply: false
+---
+# Development and Deployment
+
+This rule provides guidance on developing and deploying the Spot-Ref application.
+
+## Development Setup
+
+1. **Virtual Environment**
+   - Create a virtual environment: `python -m venv venv`
+   - Activate it:
+     - Windows: `.\venv\Scripts\activate`
+     - macOS/Linux: `source venv/bin/activate`
+
+2. **Dependencies**
+   - Install dependencies: `pip install -r requirements.txt`
+   - The project uses [pyproject.toml](mdc:Spot-Ref-New/pyproject.toml) for configuration
+
+3. **Environment Variables**
+   - Create a `.env` file in the `src/` directory with:
+     - Azure OpenAI credentials
+     - Qdrant connection details
+
+## Docker Deployment
+
+The project includes [Dockerfile](mdc:Spot-Ref-New/Dockerfile) for containerization:
+
+```bash
+# Build the Docker image
+docker build -t spot-ref .
+
+# Run the container
+docker run -p 8000:8000 spot-ref
+```
+
+## Planned Improvements
+
+According to [TODO.md](mdc:Spot-Ref-New/TODO.md), the following improvements are planned:
+
+1. Create a Docker Compose setup with:
+   - FastAPI service
+   - Qdrant service
+
+2. Implement testing:
+   - Create test modules for each component
+   - Use pytest for testing
+
+3. Refactor the ingestion process:
+   - Break down into smaller functions
+   - Improve file organization

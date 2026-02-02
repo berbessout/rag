@@ -1,0 +1,41 @@
+---
+description:
+globs: src/transfert_ppt_pdf.py
+alwaysApply: false
+---
+# PowerPoint to PDF Conversion
+
+## src/transfert_ppt_pdf.py
+
+- Converts PowerPoint files (PPT/PPTX) to PDF format
+- Uses unoconv for conversion
+- Removes original PowerPoint files after successful conversion
+- Handles error cases and reports conversion status
+- Designed to work with Customer_pdf directory
+
+### Implementation Details
+
+- Processes all PPT/PPTX files in a specified directory
+- Uses unoconv, which requires LibreOffice installation
+- Generates PDFs with the same base filename
+- Deletes original PowerPoint files after successful conversion
+- Reports conversion success/failure for each file
+
+### Usage Example
+
+```python
+# Convert all PowerPoint files in the specified directory to PDF
+convert_directory("/path/to/Customer_pdf")
+```
+
+### Dependencies
+
+- unoconv: LibreOffice-based document converter
+- os: File operations and directory management
+- subprocess: Running external unoconv commands
+
+### Error Handling
+
+- Checks conversion success by verifying PDF file creation
+- Reports detailed error information for failed conversions
+- Skips files that aren't PowerPoint documents

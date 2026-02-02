@@ -1,0 +1,16 @@
+---
+description: relative to ingestion for vector databas
+globs: src/ingest.py
+alwaysApply: false
+---
+# Ingestion Structure
+
+## src/ingest.py
+
+- Handles document ingestion into Qdrant vector database
+- Implements semantic splitting of documents
+- Contains QdrantIngestor class with methods for:
+  - Collection setup and management
+  - Text ingestion with embeddings
+  - Semantic search functionality
+- Includes CLI interface for command-line usage

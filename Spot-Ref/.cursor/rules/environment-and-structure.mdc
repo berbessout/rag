@@ -1,0 +1,52 @@
+---
+description: relative to Environment and Directory Structure
+globs:
+alwaysApply: false
+---
+# Environment and Directory Structure
+
+## Environment Variables
+
+- `AZURE_OPENAI_API_KEY`: API key for Azure OpenAI
+- `AZURE_OPENAI_ENDPOINT`: Endpoint URL for Azure OpenAI
+- `AZURE_OPENAI_DEPLOYMENT`: Deployment name (default: gpt4o)
+- `OPENAI_API_VERSION`: API version for OpenAI
+- `QDRANT_HOST`: Host for Qdrant vector database (default: localhost)
+- `QDRANT_PORT`: Port for Qdrant (default: 6333)
+- `QDRANT_COLLECTION`: Collection name (default: spot-ref-docs)
+- `DATA_DIR`: Directory for text data (default: Customer_txt)
+
+### Environment Setup
+
+- Create a `.env` file in the project root
+- Add the required environment variables with your specific values
+- For development, ensure variables are loaded with `load_dotenv()`
+- For production, set environment variables in the deployment environment
+
+### Example .env File
+
+```text
+AZURE_OPENAI_API_KEY=your-api-key-here
+AZURE_OPENAI_ENDPOINT=https://your-endpoint.openai.azure.com/
+AZURE_OPENAI_DEPLOYMENT=gpt4o
+OPENAI_API_VERSION=2023-05-15
+QDRANT_HOST=localhost
+QDRANT_PORT=6333
+QDRANT_COLLECTION=spot-ref-docs
+DATA_DIR=Customer_txt
+```
+
+## Directory Structure
+
+- `src/`: Source code files
+- `Customer_txt/`: Processed text documents
+- `Customer_pdf/`: PDF documents for processing
+- `test/`: Test files and modules
+- `docker/`: Docker-related configuration
+
+### Data Flow
+
+1. Original documents placed in `Customer_pdf/`
+2. Documents processed and converted to text in `Customer_txt/`
+3. Text documents ingested into Qdrant by ingestion scripts
+4. Application serves documents via chat interface

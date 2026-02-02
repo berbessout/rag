@@ -1,0 +1,49 @@
+---
+description:
+globs: src/prompt_list.py
+alwaysApply: false
+---
+# Prompt Templates
+
+## src/prompt_list.py
+
+- Contains prompt templates for LLM interactions
+- Defines the LLMSPLITTER_PROMPT for document splitting
+- Uses JSON formatting for structured LLM outputs
+- Includes detailed instructions for the LLM
+
+### Available Prompts
+
+#### LLMSPLITTER_PROMPT
+
+- Used by the llm_semantic_splitter.py module
+- Instructs the LLM to divide documents into semantic chunks
+- Specifies JSON output format with chunks and metadata
+- Provides detailed instructions for handling various document types
+- Supports customization with format placeholders
+
+### Prompt Structure
+
+- Clear task definition
+- Detailed instructions for processing
+- Output format specification (JSON)
+- Error handling guidelines
+- Example inputs and outputs where appropriate
+
+### Usage Example
+
+```python
+from src.prompt_list import LLMSPLITTER_PROMPT
+
+formatted_prompt = LLMSPLITTER_PROMPT.format(
+    document_source="filename.txt",
+    document_context="Document content to be processed..."
+)
+```
+
+### Best Practices
+
+- Keep prompts clear and specific
+- Include explicit output format instructions
+- Use formatting placeholders for dynamic content
+- Consider LLM context limits when designing prompts

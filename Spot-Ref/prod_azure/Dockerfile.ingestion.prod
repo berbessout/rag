@@ -1,0 +1,54 @@
+# Production Dockerfile for Ingestion Application
+# Optimized for Azure Container Apps deployment
+
+FROM python:3.13-slim
+
+# Set environment variables for production
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONPATH=/app
+
+# Install system dependencies required for document processing
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libc-dev \
+    libffi-dev \
+    poppler-utils \
+    tesseract-ocr \
+    tesseract-ocr-fra \
+    tesseract-ocr-eng \
+    libreoffice \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files first for better caching
+COPY ../pyproject.toml /app/
+COPY ../requirements.txt /app/
+
+# Install Python dependencies
+RUN pip install uv && uv pip install --system ".[ingestion]"
+
+# Copy application code
+COPY ../src/ /app/src/
+COPY ../public/ /app/public/
+
+# Create directories for document processing
+RUN mkdir -p /app/Customer_txt /app/Customer_pdf /app/temp
+
+# Create non-root user for security
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import sys; sys.exit(0)" || exit 1
+
+# Run the ingestion application
+CMD ["python", "-u", "-W", "ignore", "-m", "src.ingestion.ingest"] 

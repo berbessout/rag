@@ -1,0 +1,48 @@
+Give me projects in banking 
+Give me projects in finance 
+Give me projects that use Python
+Give me projects that use Dataiku
+Give me projects that use Dataiku and Python
+Give me projects in data
+Give me 3 projects in Python
+Give me projects in finance that use Dataiku
+Give me projects of BNP
+Give me projects of BNP Baribas
+Give me project of Airliquide
+Give me projects of Air Liquide
+Give me projects in insurance
+Give me project using Dataiju
+Show me projects in energy
+List projects in the automotive industry
+Any projects done for Société Générale?
+Do you have any projects related to Renault?
+Provide projects delivered for L’Oréal
+What are the latest projects for EDF?
+What projects used Power BI?
+Show me projects that use Snowflake
+List projects implemented with Tableau
+Give me projects using both Dataiku and Snowflake
+Are there any projects done with SQL and Python?
+Give me projects in AI or machine learning
+List projects that involve data engineering
+Any projects related to data governance?
+Show me data science use cases in your portfolio
+List projects based in Paris
+Show me projects done in Germany
+Give me projects conducted in the US
+Any international projects in the healthcare sector?
+List projects done for Carrefour using Python and Dataiku
+Give me examples of machine learning projects in the retail sector
+Show me energy projects that involve data governance and are based in Germany
+Provide data engineering projects for BNP Paribas using Spark
+Do you have any projects in the public sector that used Tableau and SQL?
+Give me projects related to supply chain optimization using Python
+Show projects involving AI for clients in the automotive industry
+Find projects in healthcare that use Dataiku and were done in Belgium
+Give me 3 recent insurance projects using Python and Snowflake
+List all projects using Power BI in the banking sector
+What projects were conducted for TotalEnergies involving predictive maintenance?
+Show me machine learning projects done in Luxembourg
+List marketing analytics projects using SQL and Tableau
+Give me projects in retail located in Spain that used Snowflake
+donne moi des projets utilisant SQL, Power BI, Azure Cloud, Azure Synapse, Azure DataBricks, Azure Data Factory.

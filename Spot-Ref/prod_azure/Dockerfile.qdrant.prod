@@ -1,0 +1,27 @@
+# Production Dockerfile for Qdrant Vector Database
+# Optimized for Azure Container Apps deployment
+
+FROM qdrant/qdrant:latest
+
+# Set environment variables for production
+ENV QDRANT__SERVICE__HTTP_PORT=6333 \
+    QDRANT__SERVICE__GRPC_PORT=6334 \
+    QDRANT__LOG_LEVEL=INFO \
+    QDRANT__STORAGE__ON_DISK_PAYLOAD=true \
+    QDRANT__STORAGE__WRITE_CONSISTENCY_FACTOR=1
+
+# Create data directory
+RUN mkdir -p /qdrant/storage
+
+# Set proper permissions
+RUN chown -R qdrant:qdrant /qdrant/storage
+
+# Expose ports
+EXPOSE 6333 6334
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:6333/health || exit 1
+
+# Use the default Qdrant entrypoint
+CMD ["./qdrant"] 

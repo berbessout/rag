@@ -1,0 +1,18 @@
+FROM python:3.13-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files first for better caching
+COPY pyproject.toml /app/
+COPY requirements.txt /app/
+
+# Install dependencies
+RUN pip install uv && uv pip install --system ".[ingestion]"
+
+# Copy application code
+COPY . /app
+
+# Set environment variables for better container behavior
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1

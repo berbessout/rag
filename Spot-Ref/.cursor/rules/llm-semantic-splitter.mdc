@@ -1,0 +1,35 @@
+---
+description: 
+globs: src/llm_semantic_splitter.py
+alwaysApply: false
+---
+# LLM Semantic Splitter
+
+## src/llm_semantic_splitter.py
+
+- Implements semantic document splitting using LLMs
+- Uses Azure OpenAI to intelligently split documents
+- Returns both chunks and associated metadata
+- Handles error cases and environment validation
+- Processes documents from Customer_txt directory
+
+### Key Functions
+
+#### semantic_split()
+
+```python
+def semantic_split(document_source: str, document_context: str, max_chunk_size: int = 1000) -> tuple[list[str], list[dict]]:
+    """Splits a text into semantic segments using an Azure OpenAI LLM."""
+```
+
+- Takes document source and context as input
+- Returns a tuple of chunks and metadata
+- Uses LLM to create semantically meaningful chunks
+- Handles errors for missing environment variables and failed LLM calls
+
+### Implementation Notes
+
+- Uses the LLMSPLITTER_PROMPT from prompt_list.py
+- Configures Azure OpenAI with environment variables
+- Parses JSON responses from the LLM
+- Returns structured data for ingestion

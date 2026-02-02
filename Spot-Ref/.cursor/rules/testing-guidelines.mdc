@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Testing Guidelines
+
+## Test Organization
+
+### File Structure
+
+- Place all tests in a directory named `test/`
+- Create test modules that match the project architecture
+- Name all test files as `test_<FILENAME>.py` (e.g., `test_ingest.py`)
+- Group tests by functionality
+
+### Test Framework
+
+- Use pytest as the test runner (not unittest)
+- Create a test configuration file
+- Add test commands to pyproject.toml
+- Set up CI/CD pipeline for automated testing
+
+## Required Test Coverage
+
+### Core Components
+
+- Write tests for all functions in `ingest.py`
+- Test all functions in `llm_semantic_splitter.py`
+- Test functions in the transfer files (`transfert_pdf_txt.py` and `transfert_ppt_pdf.py`)
+
+## Unit Testing
+
+### LLM Component Testing
+
+- Use mocked responses for LLM calls during testing
+- Test the semantic splitter with small sample documents
+- Verify JSON parsing logic with various response formats
+- Test error handling for missing environment variables
+
+### Vector Database Testing
+
+- Use an in-memory Qdrant instance for testing
+- Create fixture data for embedding tests
+- Test search functionality with known vectors
+- Verify collection creation and management
+
+### Document Processing Testing
+
+- Test PDF to text conversion with sample files
+- Verify column detection with different layouts
+- Test PowerPoint conversion with sample presentations
+- Use small test files to keep tests fast
+
+## Integration Testing
+
+### End-to-End Testing
+
+- Test the complete document ingestion pipeline
+- Verify the chatbot can retrieve relevant information
+- Test with real-world document examples
+- Validate embedding quality with similarity tests
+
+### Environment Setup
+
+- Use separate test collections in Qdrant
+- Create isolated Azure OpenAI test endpoints if possible
+- Use environment variable prefixes for test configurations
+- Clean up test data after test runs

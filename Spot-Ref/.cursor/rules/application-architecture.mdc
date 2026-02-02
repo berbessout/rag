@@ -1,0 +1,41 @@
+---
+description: relative to Application Architecture
+globs: 
+alwaysApply: false
+---
+# Application Architecture
+
+This rule describes the architecture of the Spot-Ref application built with LangGraph and Chainlit.
+
+## Components
+
+### LangGraph Components
+The application uses LangGraph to create a conversational agent with tool-calling capabilities:
+
+- **StateGraph**: Defined in [main.py](mdc:Spot-Ref-New/src/main.py) to manage the conversation flow
+- **Nodes**:
+  - `agent`: Calls the LLM to process user messages and determine next actions
+  - `tools`: Executes tools when called by the agent
+  - `final`: Formats the final response to the user
+
+### Tools
+The agent has access to tools defined in [main.py](mdc:Spot-Ref-New/src/main.py):
+- `getprojects()`: Returns information about available projects
+
+### User Interface
+The application uses Chainlit to provide a chat interface:
+- The `@cl.on_message` handler in [main.py](mdc:Spot-Ref-New/src/main.py) processes incoming user messages
+- Responses are streamed back to the user interface
+
+## Flow Diagram
+```
+User Input → Chainlit → LangGraph StateGraph → Azure OpenAI → Tools → Final Response → User
+```
+
+## Environment Configuration
+The application requires environment variables for:
+- Azure OpenAI API credentials
+- Qdrant connection details
+
+See [TODO.md](mdc:Spot-Ref-New/TODO.md) for planned improvements to the application architecture.
+
